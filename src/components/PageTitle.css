@@ -1,0 +1,9 @@
+.header {
+  display: block;
+  text-align: center;
+}
+
+.header--title {
+  color: var(--dark-pink);
+  text-transform: uppercase;
+}
