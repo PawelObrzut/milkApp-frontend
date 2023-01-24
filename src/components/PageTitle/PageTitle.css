@@ -1,9 +1,11 @@
 .header {
   display: block;
   text-align: center;
+  height: 8vh;
 }
 
 .header--title {
   color: var(--dark-pink);
   text-transform: uppercase;
+  margin: 0.5rem auto;
 }

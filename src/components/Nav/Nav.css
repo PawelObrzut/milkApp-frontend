@@ -1,0 +1,27 @@
+.nav {
+  text-align: center;
+}
+
+.nav--search {
+  position: relative;
+
+  border: solid 1px red;
+}
+
+.nav--search__icon {
+  color: var(--grey);
+  position: absolute;
+  top: 65%;
+  margin: 0.25rem 0.75rem;
+}
+
+.nav--search__input {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 2.2rem;
+  margin: 5rem 0 1rem 0;
+}
+
+.nav--search__input::placeholder {
+  color: var(--grey);
+}
