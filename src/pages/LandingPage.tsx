@@ -5,7 +5,6 @@ const LandingPage = () => {
   return (
     <main className="main">
       <Nav />
-      container for the milk
     </main>
   )
 }

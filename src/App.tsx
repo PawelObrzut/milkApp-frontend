@@ -1,15 +1,18 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { MilkProvider } from './context/MilkContext';
 import PageTitle from './components/PageTitle/PageTitle';
 import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
     <div>
-      <PageTitle />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-      </Routes>
+      <MilkProvider>
+        <PageTitle />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </MilkProvider>
     </div>
   );
 }

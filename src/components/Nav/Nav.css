@@ -46,6 +46,7 @@
   color: var(--grey);
   position: relative;
   z-index: 10;
+  cursor: pointer;
 }
 
 .nav--filter__dropdown {
@@ -59,6 +60,8 @@
   opacity: 0;
   width: 10rem;
   z-index: 5;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .nav--filter__dropdown input {
