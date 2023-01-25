@@ -34,6 +34,9 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
       .then(data => {
         setallMilksData(data)
       })
+      .catch(_error => {
+
+      }) 
   }
 
   const getMilksPage = (page: string | undefined, limit: string):void => {

@@ -1,31 +1,31 @@
 .milkStore--milk {
-  border-radius: 1rem;
-  border: solid 0.2rem rgb(220, 220, 220);
+  border-radius: 0.5rem;
+  border: solid 0.1rem var(--dark-grey);
 }
 
 .milkStore--milk__image {
   width: 100%;
-  max-height: 6rem;
+  min-height: 8rem;
+  min-width: 10rem;
   object-fit: scale-down;
   background-color: var(--white);
   padding: 1rem 4rem;
-  border-top-right-radius: 0.75rem;
-  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 }
 
-/* min-height is a shortcut, span part needs to be aligned to the bottom */
 .milkStore--milk__text {
-  min-height: 8rem;
   background-color: #fff;
   margin-top: -0.5rem;
-  padding: 1rem;
-  border-bottom-left-radius: 0.75rem;
-  border-bottom-right-radius: 0.75rem;
+  padding: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .milkStore--milk__text h5 {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   margin: 0.25rem 0.25rem 1.5rem 0rem;
+  color: var(--black)
 }
 
 .milkStore--milk__text p {

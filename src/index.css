@@ -6,7 +6,9 @@
   --white: #f5f5f5;
   --gold: #b9b996;
   --grey: #aaaaaa;
+  --dark-grey: #dcdcdc;
   --black: #232323;
+  --light-brown: rgb(150, 135, 135);
 }
 
 * {

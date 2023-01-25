@@ -1,4 +1,5 @@
 import { useMilkContext } from '../../context/MilkContext';
+import { MdClose } from 'react-icons/md'
 import './NavFilter.css'
 import NavFilterDropdown from '../NavFilterDropdown/NavFilterDropdown';
 
@@ -9,9 +10,18 @@ const NavFilter = () => {
   } = useMilkContext();
   
   return (
-    <section className="nav--filter"> 
-      <p className="nav--filter__title" onClick={() => setIsOpen(!isOpen)}>Filter</p>
-      {isOpen && <NavFilterDropdown />}
+    <section className="nav--filter">       
+      {!isOpen ? 
+        <p className="filter--title__closed" onClick={() => setIsOpen(!isOpen)}>Filter</p>
+        :
+        <div className="nav--filter__open">
+          <div className="nav--filter__sticky">
+            <p className="filter--title__open">Filter<span className="nav--filter__close" onClick={() => setIsOpen(!isOpen)}><MdClose /></span></p>
+            <p>Milk type</p>
+          </div>
+          <NavFilterDropdown />
+        </div>
+      }
     </section>
   )
 }

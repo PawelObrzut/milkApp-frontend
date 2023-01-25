@@ -1,7 +1,11 @@
 .header {
+  position: sticky;
+  top: 0;
   display: block;
   text-align: center;
   height: 8vh;
+  background-color: #fff;
+  z-index: 20;
 }
 
 .header--title {
