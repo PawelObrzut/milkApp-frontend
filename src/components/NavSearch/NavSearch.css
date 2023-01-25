@@ -1,0 +1,25 @@
+.nav--search {
+  position: relative;
+  align-self: flex-end;
+}
+
+.nav--search__icon {
+  color: var(--grey);
+  position: absolute;
+  top: 8%;
+  margin: 0.5rem 0.75rem;
+}
+
+.nav--search__input {
+  border: none;
+  width: 12rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem 0.5rem 2.2rem;
+}
+
+.nav--search__input::placeholder {
+  font-family: 'Monda', sans-serif;
+  font-size: 1rem;
+  color: var(--grey);
+  opacity: 1;
+}
