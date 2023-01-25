@@ -1,11 +1,11 @@
 import './NavFilterDropItem.css'
 
-const NavFilterDropItem = () => {
+const NavFilterDropItem = ({ milkType }: { milkType: string }) => {
   return (
     <li>
       <label>
         <input type="checkbox" />
-        Whole Milk
+          {milkType}
       </label>
     </li>
   )

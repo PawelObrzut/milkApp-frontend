@@ -1,8 +1,11 @@
-import React, { useContext, createContext, ReactNode, useState } from 'react'
+import React, { useContext, createContext, ReactNode, useState, useEffect } from 'react'
+import { InterfaceMilks, InterfaceMilk } from '../types'
 
 interface IMilkContext {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  milks: InterfaceMilk[]
+  allMilksData: InterfaceMilks
  }
 
 export const MilkContext = createContext({} as IMilkContext)
@@ -14,12 +17,54 @@ interface MilkProviderProps {
 
 export const MilkProvider = ({ children }: MilkProviderProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [milks, setMilks] = useState<InterfaceMilk[]>([{} as InterfaceMilk])
+  const [allMilksData, setallMilksData] = useState<InterfaceMilks>({} as InterfaceMilks)
+
+  const getAllMilks = (): void => {
+    fetch(`http://localhost:8080/api/milk`, {
+      method: 'GET',
+    })
+      .then(response => {
+        if(!response.ok) {
+          throw new Error();
+        }
+        return response.json()
+      })
+      .then(data => {
+        setallMilksData(data)
+      })
+  }
+
+  const getMilksPage = (page: string, limit: string):void => {
+    fetch(`http://localhost:8080/api/milk?page=${page}&limit=${limit}`, {
+      method: 'GET',
+    })
+      .then(response => {
+        if(!response.ok) {
+          throw new Error();
+        }
+        return response.json()
+      })
+      .then(data => {
+        setMilks(data.result)
+      })
+      .catch(_error => {
+
+      }) 
+  }
+
+  useEffect(() => {
+    getMilksPage('1', '9')
+    getAllMilks()
+  }, [])
 
   return (
     <MilkContext.Provider
       value={{
         setIsOpen,
         isOpen,
+        milks,
+        allMilksData
       }}
     >
       {children}

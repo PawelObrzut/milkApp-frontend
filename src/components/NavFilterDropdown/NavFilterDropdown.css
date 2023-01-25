@@ -17,6 +17,7 @@
   opacity: 0;
   width: 10rem;
   z-index: 5;
+  height: 10rem;
   overflow: scroll;
   overflow-x: hidden;
 }
