@@ -1,0 +1,38 @@
+.pagination {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination--square {
+  color: var(--grey);
+  margin: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border: solid 0.1rem var(--grey);
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.pagination--square__char {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page {
+  color: #000;
+  border-color: #000;
+}
+
+.next--prev {
+  cursor: pointer;
+}
+
+.next--prev:hover {
+  color: #000;
+  border-color: #000;
+}

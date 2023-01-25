@@ -1,6 +1,7 @@
 import { useMilkContext } from '../context/MilkContext';
 import Nav from '../components/Nav/Nav'
 import MilkStore from '../components/MilkStore/MilkStore';
+import Pagination from '../components/Pagination/Pagination';
 import './LandingPage.css'
 
 const LandingPage = () => {
@@ -13,6 +14,7 @@ const LandingPage = () => {
       <Nav />
       <h5 className="main--products__count">{allMilksData.count} products</h5>
       <MilkStore />
+      <Pagination />
     </main>
   )
 }
