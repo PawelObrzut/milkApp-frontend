@@ -1,18 +1,22 @@
 import './MilkStore.css'
-import milk from '../../images/milk.png'
+import MilkStoreItem from '../MilkStoreItem/MilkStoreItem'
+import { useMilkContext } from '../../context/MilkContext'
 
 const MilkStore = () => {
+  const {
+    milks
+  } = useMilkContext();
+
   return (
     <section className="milkStore">
-      <article className="milkStore--milk">
-        <img className="milkStore--milk__image" src={milk} alt="milk" />
-        <div className="milkStore--milk__text">
-          <h5>Jessalyn's  nice almond milk</h5>
-          <p>Almond milk <span>44 liter</span></p> 
-        </div>
-      </article>
-
-
+      {milks.map(milk => (
+        <MilkStoreItem 
+          key={milk.id + 'unique'}
+          id={milk.id}
+          name={milk.name}
+          storage={milk.storage}
+          type={milk.type} />
+      ))}
     </section>
   )
 }

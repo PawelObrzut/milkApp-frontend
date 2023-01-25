@@ -1,6 +1,7 @@
 .main {
   background-color: var(--light-pink);
-  height: 92vh;
+  min-height: 92vh;
+  padding-bottom: 3rem;
 }
 
 .main--products__count {

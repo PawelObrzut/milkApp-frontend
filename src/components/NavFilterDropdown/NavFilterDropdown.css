@@ -12,12 +12,12 @@
   line-height: normal;
   padding: 1rem;
   position: absolute;
-  top: 18%;
-  right: 10.5%;
+  top: 20%;
+  right: 11.5%;
   opacity: 0;
   width: 10rem;
   z-index: 5;
-  height: 10rem;
+  height: 20rem;
   overflow: scroll;
   overflow-x: hidden;
 }
