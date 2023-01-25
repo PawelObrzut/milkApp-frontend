@@ -2,3 +2,10 @@
   background-color: var(--light-pink);
   height: 92vh;
 }
+
+.main--products__count {
+  width: 60%;
+  margin: 0 auto;
+  color: var(--grey);
+  padding: 2rem 0;
+}
