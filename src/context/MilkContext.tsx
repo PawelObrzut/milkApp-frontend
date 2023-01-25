@@ -1,25 +1,25 @@
-import { useContext, createContext, ReactNode } from 'react';
+import React, { useContext, createContext, ReactNode, useState } from 'react'
 
 interface IMilkContext {
-  printHello: () => void
-}
+  isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+ }
 
-export const MilkContext = createContext({} as IMilkContext);
-export const useMilkContext = () => useContext(MilkContext);
+export const MilkContext = createContext({} as IMilkContext)
+export const useMilkContext = () => useContext(MilkContext)
 
 interface MilkProviderProps {
   children: ReactNode
 }
 
 export const MilkProvider = ({ children }: MilkProviderProps) => {
-  const printHello = () => {
-    console.log('hello world')
-  } 
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <MilkContext.Provider
       value={{
-        printHello
+        setIsOpen,
+        isOpen,
       }}
     >
       {children}

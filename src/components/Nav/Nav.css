@@ -42,6 +42,14 @@
   align-self: flex-end;
 }
 
+.nav--filter__close {
+  position: absolute;
+  right: 10%;
+  top: 4%;
+  margin: 0;
+  cursor: pointer;
+}
+
 .nav--filter__title {
   color: var(--grey);
   position: relative;

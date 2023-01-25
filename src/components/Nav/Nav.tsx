@@ -1,10 +1,12 @@
 import './Nav.css'
 import { BsSearch } from 'react-icons/bs'
+import { MdClose } from 'react-icons/md'
 import { useMilkContext } from '../../context/MilkContext'
 
 const Nav = () => {
   const {
-    printHello
+    isOpen,
+    setIsOpen
   } = useMilkContext();
 
   return (
@@ -15,8 +17,10 @@ const Nav = () => {
       </div>
 
       <div className="nav--filter"> 
-        <p className="nav--filter__title" onClick={printHello}>Filter</p>
-        <ul className="nav--filter__dropdown active">
+        <p className="nav--filter__title" onClick={() => setIsOpen(!isOpen)}>Filter</p>
+        
+      { isOpen && <ul className="nav--filter__dropdown active">
+        <p className="nav--filter__close"onClick={() => setIsOpen(!isOpen)}><MdClose /></p>
         <p className="nav--filter__category">Milk type</p>
           <li>
             <label>
@@ -36,7 +40,8 @@ const Nav = () => {
               Almond Milk
             </label>
           </li>
-        </ul>
+        </ul> }
+
       </div>
 
 
