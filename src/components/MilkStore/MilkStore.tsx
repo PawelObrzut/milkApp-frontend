@@ -9,7 +9,7 @@ const MilkStore = () => {
 
   return (
     <section className="milkStore">
-      {milks.map(milk => (
+      {milks.result?.map(milk => (
         <MilkStoreItem 
           key={milk.id + 'unique'}
           id={milk.id}

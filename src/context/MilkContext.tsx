@@ -1,11 +1,12 @@
 import React, { useContext, createContext, ReactNode, useState, useEffect } from 'react'
-import { InterfaceMilks, InterfaceMilk } from '../types'
+import { InterfaceMilks } from '../types'
 
 interface IMilkContext {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  milks: InterfaceMilk[]
-  allMilksData: InterfaceMilks
+  milks: InterfaceMilks
+  allMilksData: InterfaceMilks,
+  getMilksPage: (page: string, limit:string) => void
  }
 
 export const MilkContext = createContext({} as IMilkContext)
@@ -17,7 +18,7 @@ interface MilkProviderProps {
 
 export const MilkProvider = ({ children }: MilkProviderProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [milks, setMilks] = useState<InterfaceMilk[]>([{} as InterfaceMilk])
+  const [milks, setMilks] = useState<InterfaceMilks>({} as InterfaceMilks)
   const [allMilksData, setallMilksData] = useState<InterfaceMilks>({} as InterfaceMilks)
 
   const getAllMilks = (): void => {
@@ -46,7 +47,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         return response.json()
       })
       .then(data => {
-        setMilks(data.result)
+        setMilks(data)
       })
       .catch(_error => {
 
@@ -64,7 +65,8 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         setIsOpen,
         isOpen,
         milks,
-        allMilksData
+        allMilksData,
+        getMilksPage
       }}
     >
       {children}

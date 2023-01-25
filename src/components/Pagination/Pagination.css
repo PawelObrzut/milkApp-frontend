@@ -30,9 +30,14 @@
 
 .next--prev {
   cursor: pointer;
+  background-color: transparent;
 }
 
 .next--prev:hover {
   color: #000;
   border-color: #000;
+}
+
+.disable {
+  cursor: not-allowed;
 }
