@@ -10,33 +10,47 @@ const Pagination = () => {
     getMilksPage,
   } = useMilkContext();
 
+  const next:string | undefined = milks.next?.toString()
+  const previous: string | undefined = milks.previous?.toString()
+
   const handleNextPage = () => {
-    getMilksPage('2','9')
+    getMilksPage(next, '9')
+  }
+
+  const handlePreviousPage = () => {
+    getMilksPage(previous, '9')
   }
 
   return (
     <section className="pagination">
       {milks.previous ? 
-        <button className="pagination--square next--prev">
+        <button className="pagination--square next--prev" onClick={() => {handlePreviousPage()}}>
           <span className="pagination--square__char"><MdArrowBackIosNew /></span>
         </button> 
       : 
-        <button className="pagination--square next--prev disable" disabled>
+        <button className="pagination--square next--prev disabled" disabled>
           <span className="pagination--square__char"><MdArrowBackIosNew /></span>
         </button>
       }
       <div className="pagination--square page">
-        <span className="pagination--square__char">1</span>
+        <span className="pagination--square__char">{milks.page ? milks.page : '--'}</span>
       </div>
-      <div>
+      <div className="pagination--square__of">
         of
       </div>
       <div className="pagination--square page">
-        <span className="pagination--square__char">11</span>
+        <span className="pagination--square__char">{milks.count && milks.limit ? milks.count/milks.limit : '--'}</span>
       </div>
-      <button className="pagination--square next--prev" onClick={() => handleNextPage() }>
+      {milks.next ? 
+        <button className="pagination--square next--prev" onClick={() => handleNextPage() }>
+          <span className="pagination--square__char"><MdArrowForwardIos /></span>
+        </button>
+        :
+      <button className="pagination--square next--prev disabled" disabled>
         <span className="pagination--square__char"><MdArrowForwardIos /></span>
       </button>
+      }
+      
     </section>
   )
 }

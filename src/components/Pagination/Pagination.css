@@ -23,6 +23,10 @@
   transform: translate(-50%, -50%);
 }
 
+.pagination--square__of {
+  color: var(--grey)
+}
+
 .page {
   color: #000;
   border-color: #000;
@@ -38,6 +42,6 @@
   border-color: #000;
 }
 
-.disable {
+.disabled {
   cursor: not-allowed;
 }

@@ -6,7 +6,7 @@ interface IMilkContext {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   milks: InterfaceMilks
   allMilksData: InterfaceMilks,
-  getMilksPage: (page: string, limit:string) => void
+  getMilksPage: (page: string | undefined, limit:string) => void
  }
 
 export const MilkContext = createContext({} as IMilkContext)
@@ -36,7 +36,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
       })
   }
 
-  const getMilksPage = (page: string, limit: string):void => {
+  const getMilksPage = (page: string | undefined, limit: string):void => {
     fetch(`http://localhost:8080/api/milk?page=${page}&limit=${limit}`, {
       method: 'GET',
     })

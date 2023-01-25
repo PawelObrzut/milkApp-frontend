@@ -1,6 +1,6 @@
 export interface InterfaceMilks {
   limit?: number,
-  currentPage?: number,
+  page?: number,
   count?: number
   previous?: number
   next?: number
