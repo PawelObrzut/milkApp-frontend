@@ -12,4 +12,5 @@
   color: var(--dark-pink);
   text-transform: uppercase;
   margin: 0.5rem auto;
+  cursor: pointer;
 }

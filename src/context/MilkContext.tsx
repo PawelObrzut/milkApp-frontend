@@ -6,11 +6,11 @@ interface IMilkContext {
   milkTypes: string[]
   filter: string[]
   milks: InterfaceMilks
+  milk: InterfaceMilk
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   getMilksPage: (page: string | undefined, filter?: string[]) => void
   setMilks: React.Dispatch<React.SetStateAction<InterfaceMilks>>
   setFilter:  React.Dispatch<React.SetStateAction<string[]>>
-  milk: InterfaceMilk
   setMilk: React.Dispatch<React.SetStateAction<InterfaceMilk>>
  }
 
@@ -23,6 +23,7 @@ interface MilkProviderProps {
 
 export const MilkProvider = ({ children }: MilkProviderProps) => {
   const milkTypes: string[] = ['Cashew milk', 'Pea milk', 'Walnut milk', 'Rice milk', 'Coconut milk', 'Soy milk', 'Hemp milk', 'Almond milk', 'Oat milk', 'Macadamia milk', 'Whole milk']
+  
   const [isOpen, setIsOpen] = useState(false)
   const [milks, setMilks] = useState<InterfaceMilks>({} as InterfaceMilks)
   const [milk, setMilk] = useState({} as InterfaceMilk)
@@ -36,6 +37,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
       const searchUrlFormat = filter.join('%2B').replace(/ /g, '%20')
       url = `http://localhost:8080/api/milk?page=${page}&limit=9&filter=${searchUrlFormat}`
     }
+
     fetch(url, {
       method: 'GET',
     })
@@ -45,9 +47,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         }
         return response.json()
       })
-      .then(data => {
-        setMilks(data)
-      })
+      .then(data => setMilks(data))
       .catch(_error => {
 
       }) 
@@ -64,11 +64,11 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         milkTypes,
         filter,
         milks,
+        milk,
         setIsOpen,
         getMilksPage,
         setMilks,
         setFilter,
-        milk,
         setMilk
       }}
     >

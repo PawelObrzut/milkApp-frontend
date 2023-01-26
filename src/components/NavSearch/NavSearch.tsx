@@ -1,9 +1,13 @@
 import { useRef } from 'react'
 import { BsSearch } from 'react-icons/bs'
+import { useMilkContext } from '../../context/MilkContext';
 import './NavSearch.css'
 
 const NavSearch = () => {
   const input = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const {
+    setMilks
+  } = useMilkContext()
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -11,7 +15,7 @@ const NavSearch = () => {
       input.current.value = ''
       fetch(`http://localhost:8080/api/milk/${searchName}`, {method: 'GET'})
         .then(respond => respond.json())
-        .then(data => console.log(data))
+        .then(data => setMilks(data))
     }
   };
 
