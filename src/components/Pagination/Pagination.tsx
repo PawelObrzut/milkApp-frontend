@@ -24,7 +24,7 @@ const Pagination = () => {
   return (
     <section className="pagination">
       {milks.previous ? 
-        <button className="pagination--square next--prev" onClick={() => {handlePreviousPage()}}>
+        <button className="pagination--square next--prev" onClick={handlePreviousPage}>
           <span className="pagination--square__char"><MdArrowBackIosNew /></span>
         </button> 
       : 
@@ -42,7 +42,7 @@ const Pagination = () => {
         <span className="pagination--square__char">{milks.count && milks.limit ? milks.count/milks.limit : '--'}</span>
       </div>
       {milks.next ? 
-        <button className="pagination--square next--prev" onClick={() => handleNextPage() }>
+        <button className="pagination--square next--prev" onClick={handleNextPage}>
           <span className="pagination--square__char"><MdArrowForwardIos /></span>
         </button>
         :

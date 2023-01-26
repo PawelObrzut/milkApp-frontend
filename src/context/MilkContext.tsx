@@ -7,6 +7,7 @@ interface IMilkContext {
   milks: InterfaceMilks
   allMilksData: InterfaceMilks,
   getMilksPage: (page: string | undefined, limit:string) => void
+  toFilterItems: string[]
  }
 
 export const MilkContext = createContext({} as IMilkContext)
@@ -20,6 +21,8 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [milks, setMilks] = useState<InterfaceMilks>({} as InterfaceMilks)
   const [allMilksData, setallMilksData] = useState<InterfaceMilks>({} as InterfaceMilks)
+
+  const toFilterItems: string[] = []
 
   const getAllMilks = (): void => {
     fetch(`http://localhost:8080/api/milk`, {
@@ -69,7 +72,8 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         isOpen,
         milks,
         allMilksData,
-        getMilksPage
+        getMilksPage,
+        toFilterItems
       }}
     >
       {children}
