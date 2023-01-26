@@ -3,11 +3,13 @@ import { InterfaceMilks } from '../types'
 
 interface IMilkContext {
   isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  milkTypes: string[]
+  filter: string[]
   milks: InterfaceMilks
-  allMilksData: InterfaceMilks,
-  getMilksPage: (page: string | undefined, limit:string) => void
-  toFilterItems: string[]
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  getMilksPage: (page: string | undefined) => void
+  setMilks: React.Dispatch<React.SetStateAction<InterfaceMilks>>
+  setFilter:  React.Dispatch<React.SetStateAction<string[]>>
  }
 
 export const MilkContext = createContext({} as IMilkContext)
@@ -20,30 +22,12 @@ interface MilkProviderProps {
 export const MilkProvider = ({ children }: MilkProviderProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [milks, setMilks] = useState<InterfaceMilks>({} as InterfaceMilks)
-  const [allMilksData, setallMilksData] = useState<InterfaceMilks>({} as InterfaceMilks)
+  const [filter, setFilter] = useState([] as string[])
 
-  const toFilterItems: string[] = []
+  const milkTypes: string[] = ['Cashew milk', 'Pea milk', 'Walnut milk', 'Rice milk', 'Coconut milk', 'Soy milk', 'Hemp milk', 'Almond milk', 'Oat milk', 'Macademia milk', 'Whole milk']
 
-  const getAllMilks = (): void => {
-    fetch(`http://localhost:8080/api/milk`, {
-      method: 'GET',
-    })
-      .then(response => {
-        if(!response.ok) {
-          throw new Error();
-        }
-        return response.json()
-      })
-      .then(data => {
-        setallMilksData(data)
-      })
-      .catch(_error => {
-
-      }) 
-  }
-
-  const getMilksPage = (page: string | undefined, limit: string):void => {
-    fetch(`http://localhost:8080/api/milk?page=${page}&limit=${limit}`, {
+  const getMilksPage = (page: string | undefined):void => {
+    fetch(`http://localhost:8080/api/milk?page=${page}&limit=9`, {
       method: 'GET',
     })
       .then(response => {
@@ -61,19 +45,24 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   }
 
   useEffect(() => {
-    getMilksPage('1', '9')
-    getAllMilks()
+    getMilksPage('1')
   }, [])
+
+  useEffect(() => {
+    console.log(filter)
+  }, [filter])
 
   return (
     <MilkContext.Provider
       value={{
-        setIsOpen,
         isOpen,
+        milkTypes,
+        filter,
         milks,
-        allMilksData,
+        setIsOpen,
         getMilksPage,
-        toFilterItems
+        setMilks,
+        setFilter,
       }}
     >
       {children}

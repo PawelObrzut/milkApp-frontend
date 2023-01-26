@@ -14,11 +14,11 @@ const Pagination = () => {
   const previous: string | undefined = milks.previous?.toString()
 
   const handleNextPage = () => {
-    getMilksPage(next, '9')
+    getMilksPage(next)
   }
 
   const handlePreviousPage = () => {
-    getMilksPage(previous, '9')
+    getMilksPage(previous)
   }
 
   return (
@@ -32,15 +32,19 @@ const Pagination = () => {
           <span className="pagination--square__char"><MdArrowBackIosNew /></span>
         </button>
       }
+      
       <div className="pagination--square page">
         <span className="pagination--square__char">{milks.page ? milks.page : '--'}</span>
       </div>
+
       <div className="pagination--square__of">
         of
       </div>
+
       <div className="pagination--square page">
         <span className="pagination--square__char">{milks.count && milks.limit ? milks.count/milks.limit : '--'}</span>
       </div>
+
       {milks.next ? 
         <button className="pagination--square next--prev" onClick={handleNextPage}>
           <span className="pagination--square__char"><MdArrowForwardIos /></span>

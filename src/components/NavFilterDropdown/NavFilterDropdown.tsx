@@ -4,13 +4,13 @@ import NavFilterDropItem from '../NavFilterDropItem/NavFilterDropItem';
 
 const NavFilterDropdown = () => {
   const {
-    allMilksData
+    milkTypes
   } = useMilkContext();
 
   return (
     <ul className="nav--filter__dropdown active">
-      {allMilksData.result.map(milk => (
-        <NavFilterDropItem key={milk.id} milkType={milk.type} />
+      {milkTypes.map(type => (
+        <NavFilterDropItem key={type} type={type} />
       ))}
     </ul>
   )

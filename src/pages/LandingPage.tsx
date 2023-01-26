@@ -6,13 +6,13 @@ import './LandingPage.css'
 
 const LandingPage = () => {
   const {
-    allMilksData
+    milks
   } = useMilkContext();
   
   return (
     <main className="main">
       <Nav />
-      <h5 className="main--products__count">{allMilksData.count} products</h5>
+      <h5 className="main--products__count">{milks.count} products</h5>
       <MilkStore />
       <Pagination />
     </main>

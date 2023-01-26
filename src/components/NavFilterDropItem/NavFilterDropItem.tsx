@@ -1,25 +1,26 @@
 import { useMilkContext } from '../../context/MilkContext'
 import './NavFilterDropItem.css'
 
-const NavFilterDropItem = ({ milkType }: { milkType: string }) => {
+const NavFilterDropItem = ({ type }: { type: string }) => {
   const {
-    toFilterItems
+    setFilter,
+    filter,
   } = useMilkContext()
   
-  const setFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const milkTypeIndex = toFilterItems.indexOf(event.target.value)
+  const setFilterTypes = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const milkTypeIndex = filter.indexOf(event.target.value)
     if (milkTypeIndex === -1) {
-      toFilterItems.push(event.target.value)
+      setFilter(current => [...current, event.target.value])
       return
     }
-    toFilterItems.splice(milkTypeIndex, 1);
+    setFilter(current => current.filter(type => type !== event.target.value))
   }
 
   return (
     <li>
       <label>
-        <input value={milkType} type="checkbox" onChange={setFilter} />
-          {milkType}
+        <input value={type} type="checkbox" onChange={setFilterTypes} />
+          {type}
       </label>
     </li>
   )
