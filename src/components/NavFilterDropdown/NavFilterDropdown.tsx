@@ -8,7 +8,7 @@ const NavFilterDropdown = () => {
   } = useMilkContext();
 
   return (
-    <ul className="nav--filter__dropdown active">
+    <ul className="nav--filter__dropdown">
       {milkTypes.map(type => (
         <NavFilterDropItem key={type} type={type} />
       ))}

@@ -7,6 +7,7 @@ import './Pagination.css'
 const Pagination = () => {
   const {
     milks,
+    filter,
     getMilksPage,
   } = useMilkContext();
 
@@ -14,11 +15,11 @@ const Pagination = () => {
   const previous: string | undefined = milks.previous?.toString()
 
   const handleNextPage = () => {
-    getMilksPage(next)
+    getMilksPage(next, filter)
   }
 
   const handlePreviousPage = () => {
-    getMilksPage(previous)
+    getMilksPage(previous, filter)
   }
 
   return (
@@ -42,7 +43,7 @@ const Pagination = () => {
       </div>
 
       <div className="pagination--square page">
-        <span className="pagination--square__char">{milks.count && milks.limit ? milks.count/milks.limit : '--'}</span>
+        <span className="pagination--square__char">{milks.count && milks.limit ? Math.ceil(milks.count/milks.limit) : '--'}</span>
       </div>
 
       {milks.next ? 
