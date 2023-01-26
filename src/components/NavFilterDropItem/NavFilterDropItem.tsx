@@ -19,11 +19,12 @@ const NavFilterDropItem = ({ type }: { type: string }) => {
   return (
     <li>
       <label>
-        { filter.includes(type) ? 
+        {/* { filter.includes(type) ? 
           <input value={type} type="checkbox" onChange={setFilterTypes} checked />
           :
           <input value={type} type="checkbox" onChange={setFilterTypes} />
-        } 
+        }  */}
+        <input value={type} type="checkbox" onChange={setFilterTypes} />
           {type}
       </label>
     </li>

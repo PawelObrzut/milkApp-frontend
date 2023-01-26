@@ -1,0 +1,18 @@
+.main--milk {
+  width: 20rem;
+  height: 20rem;
+  margin: auto;
+  padding: 5rem 0;
+}
+
+.main--button__back {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 3rem;
+}
+
+.main--button__icon {
+  font-size: 0.8rem;
+  color: var(--grey);
+}

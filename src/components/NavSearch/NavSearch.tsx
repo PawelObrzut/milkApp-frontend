@@ -1,11 +1,24 @@
+import { useRef } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import './NavSearch.css'
 
 const NavSearch = () => {
+  const input = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      const searchName = input.current?.value
+      input.current.value = ''
+      fetch(`http://localhost:8080/api/milk/${searchName}`, {method: 'GET'})
+        .then(respond => respond.json())
+        .then(data => console.log(data))
+    }
+  };
+
   return (
     <section className="nav--search">
       <BsSearch className="nav--search__icon"/>
-      <input className="nav--search__input" type="text" placeholder="Search"></input>
+      <input className="nav--search__input" type="text" placeholder="Search" ref={input} onKeyDown={handleKeyDown}></input>
     </section>
   )
 }
