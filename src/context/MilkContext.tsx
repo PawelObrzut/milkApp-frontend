@@ -1,5 +1,5 @@
 import React, { useContext, createContext, ReactNode, useState, useEffect } from 'react'
-import { InterfaceMilks } from '../types'
+import { InterfaceMilks, InterfaceMilk } from '../types'
 
 interface IMilkContext {
   isOpen: boolean
@@ -10,6 +10,8 @@ interface IMilkContext {
   getMilksPage: (page: string | undefined, filter?: string[]) => void
   setMilks: React.Dispatch<React.SetStateAction<InterfaceMilks>>
   setFilter:  React.Dispatch<React.SetStateAction<string[]>>
+  milk: InterfaceMilk
+  setMilk: React.Dispatch<React.SetStateAction<InterfaceMilk>>
  }
 
 export const MilkContext = createContext({} as IMilkContext)
@@ -23,6 +25,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   const milkTypes: string[] = ['Cashew milk', 'Pea milk', 'Walnut milk', 'Rice milk', 'Coconut milk', 'Soy milk', 'Hemp milk', 'Almond milk', 'Oat milk', 'Macadamia milk', 'Whole milk']
   const [isOpen, setIsOpen] = useState(false)
   const [milks, setMilks] = useState<InterfaceMilks>({} as InterfaceMilks)
+  const [milk, setMilk] = useState({} as InterfaceMilk)
   const [filter, setFilter] = useState([] as string[])
 
   const getMilksPage = (page: string | undefined, filter?: string[]):void => {
@@ -65,6 +68,8 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         getMilksPage,
         setMilks,
         setFilter,
+        milk,
+        setMilk
       }}
     >
       {children}

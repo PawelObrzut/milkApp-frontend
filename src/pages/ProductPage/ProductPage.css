@@ -1,18 +1,69 @@
-.main--milk {
-  width: 20rem;
-  height: 20rem;
-  margin: auto;
-  padding: 5rem 0;
+.main--button {
+  width: 28rem;
+  margin: 0 auto;
+  padding: 5rem 0 4rem 0;
 }
 
 .main--button__back {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   cursor: pointer;
-  padding-bottom: 3rem;
 }
 
 .main--button__icon {
+  color: var(--grey);
+}
+
+.main--milk {
+  width: 28rem;
+  height: 15rem;
+  margin: 0 auto;
+}
+
+.main--milk__image {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.main--milk__image img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 2.5rem;
+  background-color: var(--white);
+}
+
+.main--milk__text {
+  padding: 1.5rem;
+  float: right;
+  width: 50%;
+  height: 100%;
+}
+
+.main--milk__text h5 {
+  font-size: 0.8rem;
+}
+
+.main--milk__text p {
   font-size: 0.8rem;
   color: var(--grey);
+}
+
+.main--milk__text .storage {
+  font-size: 0.9rem;
+  color: goldenrod;
+}
+
+.milk--button__order {
+  width: 6rem;
+  height: 2rem;
+  border: none;
+  margin-top: 4rem;
+  background-color: var(--dark-grey);
+  cursor: pointer;
+}
+
+.milk--button__order:hover {
+  background-color: var(--grey);
 }
