@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { useMilkContext } from '../../context/MilkContext';
 import './NavFilterDropItem.css';
 
 const NavFilterDropItem = ({ type }: { type: string }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
   const {
     setFilter,
     filter,
   } = useMilkContext();
 
   const setFilterTypes = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(() => !isChecked);
     const milkTypeIndex = filter.indexOf(event.target.value);
     if (milkTypeIndex === -1) {
       setFilter(current => [...current, event.target.value]);
@@ -19,12 +23,8 @@ const NavFilterDropItem = ({ type }: { type: string }) => {
   return (
     <li>
       <label>
-        {/* { filter.includes(type)
-          ? <input value={type} type="checkbox" onChange={setFilterTypes} checked />
-          : <input value={type} type="checkbox" onChange={setFilterTypes} />
-        } */}
-        <input value={type} type="checkbox" onChange={setFilterTypes} />
-          {type}
+        <input value={type} type="checkbox" onChange={setFilterTypes} checked={isChecked}/>
+        {type}
       </label>
     </li>
   );
