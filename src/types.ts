@@ -5,7 +5,7 @@ export interface InterfaceMilks {
   previous?: number
   next?: number
   result: InterfaceMilk[]
-};
+}
 
 export interface InterfaceMilk {
   name: string,

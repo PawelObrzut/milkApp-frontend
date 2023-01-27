@@ -1,14 +1,14 @@
-import { useMilkContext } from '../../context/MilkContext'
-import Nav from '../../components/Nav/Nav'
-import MilkStore from '../../components/MilkStore/MilkStore'
-import Pagination from '../../components/Pagination/Pagination'
-import './LandingPage.css'
+import { useMilkContext } from '../../context/MilkContext';
+import Nav from '../../components/Nav/Nav';
+import MilkStore from '../../components/MilkStore/MilkStore';
+import Pagination from '../../components/Pagination/Pagination';
+import './LandingPage.css';
 
 const LandingPage = () => {
   const {
-    milks
-  } = useMilkContext()
-  
+    milks,
+  } = useMilkContext();
+
   return (
     <main className="main">
       <Nav />
@@ -16,7 +16,7 @@ const LandingPage = () => {
       <MilkStore />
       <Pagination />
     </main>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

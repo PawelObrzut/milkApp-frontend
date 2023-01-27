@@ -1,16 +1,16 @@
-import { useNavigate } from 'react-router-dom'
-import { MdArrowBackIosNew } from 'react-icons/md'
-import milkImage from '../../images/milk.png'
+import { useNavigate } from 'react-router-dom';
+import { MdArrowBackIosNew } from 'react-icons/md';
+import milkImage from '../../images/milk.png';
 
-import './ProductPage.css'
-import { useMilkContext } from '../../context/MilkContext'
+import './ProductPage.css';
+import { useMilkContext } from '../../context/MilkContext';
 
 const ProductPage = () => {
   const navigate = useNavigate();
   const {
-    milk
+    milk,
   } = useMilkContext();
-  
+
   return (
     <main className="main">
       <div className="main--button">
@@ -35,7 +35,7 @@ const ProductPage = () => {
         </div>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;

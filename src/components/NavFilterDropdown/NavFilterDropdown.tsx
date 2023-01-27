@@ -1,10 +1,10 @@
 import { useMilkContext } from '../../context/MilkContext';
-import './NavFilterDropdown.css'
+import './NavFilterDropdown.css';
 import NavFilterDropItem from '../NavFilterDropItem/NavFilterDropItem';
 
 const NavFilterDropdown = () => {
   const {
-    milkTypes
+    milkTypes,
   } = useMilkContext();
 
   return (
@@ -13,7 +13,7 @@ const NavFilterDropdown = () => {
         <NavFilterDropItem key={type} type={type} />
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default NavFilterDropdown
+export default NavFilterDropdown;

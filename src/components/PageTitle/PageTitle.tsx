@@ -1,23 +1,23 @@
-import { useNavigate } from 'react-router-dom'
-import { useMilkContext } from '../../context/MilkContext'
-import './PageTitle.css'
+import { useNavigate } from 'react-router-dom';
+import { useMilkContext } from '../../context/MilkContext';
+import './PageTitle.css';
 
 const PageTitle = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
-    getMilksPage
-  } = useMilkContext()
+    getMilksPage,
+  } = useMilkContext();
 
   const reloadLandingPage = () => {
-    getMilksPage('1')
-    navigate('/')
-  }
+    getMilksPage('1');
+    navigate('/');
+  };
 
   return (
     <header className="header">
       <h1 className="header--title" onClick={reloadLandingPage}>the milk store</h1>
     </header>
-  )
-}
+  );
+};
 
-export default PageTitle
+export default PageTitle;

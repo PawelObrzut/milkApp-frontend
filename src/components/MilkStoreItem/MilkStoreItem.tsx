@@ -1,22 +1,24 @@
-import milkImage from '../../images/milk.png'
-import './MilkStoreItem.css'
-import { InterfaceMilk } from '../../types'
-import { Link } from 'react-router-dom'
-import { useMilkContext } from '../../context/MilkContext'
+import { Link } from 'react-router-dom';
+import milkImage from '../../images/milk.png';
+import './MilkStoreItem.css';
+import { InterfaceMilk } from '../../types';
+import { useMilkContext } from '../../context/MilkContext';
 
-const MilkStoreItem = ({ name, type, storage, id}: InterfaceMilk) => {
+const MilkStoreItem = ({
+  name, type, storage, id,
+}: InterfaceMilk) => {
   const {
-    setMilk
-  } = useMilkContext()
+    setMilk,
+  } = useMilkContext();
 
   const passTheState = () => {
     setMilk({
-      name: name,
-      type: type,
-      storage: storage,
-      id: id
-    })
-  }
+      name,
+      type,
+      storage,
+      id,
+    });
+  };
 
   return (
     <Link to={`/${id}`} style={{ textDecoration: 'none' }} onClick={passTheState}>
@@ -24,11 +26,11 @@ const MilkStoreItem = ({ name, type, storage, id}: InterfaceMilk) => {
         <img className="milkStore--milk__image" src={milkImage} alt="milkey" />
         <div className="milkStore--milk__text">
           <h5>{name}</h5>
-          <p>{type} <span>{storage} liter</span></p> 
+          <p>{type} <span>{storage} liter</span></p>
         </div>
       </article>
     </Link>
-  )
-}
+  );
+};
 
-export default MilkStoreItem
+export default MilkStoreItem;
