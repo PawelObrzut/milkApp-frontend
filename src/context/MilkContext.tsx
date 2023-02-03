@@ -34,10 +34,10 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   const getMilksPage = (page: string | undefined, typesFilter?: string[]):void => {
     let url = '';
     if (typesFilter === undefined) {
-      url = `https://backend-dev.eu-north-1.elasticbeanstalk.com/api/milks?page=${page}&limit=9`;
+      url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9`;
     } else {
       const searchUrlFormat = typesFilter.join('%2B').replace(/ /g, '%20');
-      url = `https://backend-dev.eu-north-1.elasticbeanstalk.com/api/milks?page=${page}&limit=9&filter=${searchUrlFormat}`;
+      url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9&filter=${searchUrlFormat}`;
     }
 
     fetch(url, {

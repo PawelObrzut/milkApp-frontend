@@ -1,9 +1,15 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+if (process.env.NODE_ENV === 'production') {
+  disableReactDevTools();
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
