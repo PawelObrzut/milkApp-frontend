@@ -4,6 +4,7 @@ import React, {
 import { InterfaceMilks, InterfaceMilk } from '../types';
 
 interface IMilkContext {
+  loadingSpinner: boolean
   isOpen: boolean
   milkTypes: string[]
   filter: string[]
@@ -30,16 +31,17 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   const [milks, setMilks] = useState<InterfaceMilks>({} as InterfaceMilks);
   const [milk, setMilk] = useState({} as InterfaceMilk);
   const [filter, setFilter] = useState([] as string[]);
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
 
   const getMilksPage = (page: string | undefined, typesFilter?: string[]):void => {
     let url = '';
     if (typesFilter === undefined) {
-      url = `https://milkapp-api.onrender.com/api/milk?page=${page}&limit=9`;
+      url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9`;
     } else {
       const searchUrlFormat = typesFilter.join('%2B').replace(/ /g, '%20');
-      url = `https://milkapp-api.onrender.com/api/milk?page=${page}&limit=9&filter=${searchUrlFormat}`;
+      url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9&filter=${searchUrlFormat}`;
     }
-
+    setLoadingSpinner(true);
     fetch(url, {
       method: 'GET',
     })
@@ -49,7 +51,10 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         }
         return response.json();
       })
-      .then(data => setMilks(data));
+      .then(data => {
+        setMilks(data);
+        setLoadingSpinner(false);
+      });
   };
 
   useEffect(() => {
@@ -59,6 +64,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   return (
     <MilkContext.Provider
       value={{
+        loadingSpinner,
         isOpen,
         milkTypes,
         filter,
