@@ -6,16 +6,14 @@ import './NavSearch.css';
 const NavSearch = () => {
   const input = useRef() as React.MutableRefObject<HTMLInputElement>;
   const {
-    setMilks,
+    getMilkByName,
   } = useMilkContext();
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       const searchName = input.current?.value;
       input.current.value = '';
-      fetch(`https://milkapp-api.onrender.com/api/milks/${searchName}`, { method: 'GET' })
-        .then(respond => respond.json())
-        .then(data => setMilks(data));
+      getMilkByName(searchName);
     }
   };
 

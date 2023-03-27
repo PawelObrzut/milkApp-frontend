@@ -15,6 +15,7 @@ interface IMilkContext {
   setMilks: React.Dispatch<React.SetStateAction<InterfaceMilks>>
   setFilter: React.Dispatch<React.SetStateAction<string[]>>
   setMilk: React.Dispatch<React.SetStateAction<InterfaceMilk>>
+  getMilkByName: (searchName: string) => void
 }
 
 export const MilkContext = createContext({} as IMilkContext);
@@ -33,7 +34,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   const [filter, setFilter] = useState([] as string[]);
   const [loadingSpinner, setLoadingSpinner] = useState(false);
 
-  const getMilksPage = (page: string | undefined, typesFilter?: string[]):void => {
+  const getMilksPage = (page: string | undefined, typesFilter?: string[]): void => {
     let url = '';
     if (typesFilter === undefined) {
       url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9`;
@@ -45,6 +46,21 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
     fetch(url, {
       method: 'GET',
     })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then(data => {
+        setMilks(data);
+        setLoadingSpinner(false);
+      });
+  };
+
+  const getMilkByName = (searchName: string) => {
+    setLoadingSpinner(true);
+    fetch(`https://milkapp-api.onrender.com/api/milks/${searchName}`, { method: 'GET' })
       .then(response => {
         if (!response.ok) {
           throw new Error();
@@ -75,6 +91,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
         setMilks,
         setFilter,
         setMilk,
+        getMilkByName,
       }}
     >
       {children}
