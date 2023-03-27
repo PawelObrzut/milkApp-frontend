@@ -13,7 +13,7 @@ const NavSearch = () => {
     if (event.key === 'Enter') {
       const searchName = input.current?.value;
       input.current.value = '';
-      fetch(`https://milkapp-api.onrender.com/api/milk/${searchName}`, { method: 'GET' })
+      fetch(`https://milkapp-api.onrender.com/api/milks/${searchName}`, { method: 'GET' })
         .then(respond => respond.json())
         .then(data => setMilks(data));
     }
