@@ -37,10 +37,10 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
   const getMilksPage = (page: string | undefined, typesFilter?: string[]): void => {
     let url = '';
     if (typesFilter === undefined) {
-      url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9`;
+      url = `https://milkapp-backend-production.up.railway.app/api/milks?page=${page}&limit=9`;
     } else {
       const searchUrlFormat = typesFilter.join('%2B').replace(/ /g, '%20');
-      url = `https://milkapp-api.onrender.com/api/milks?page=${page}&limit=9&filter=${searchUrlFormat}`;
+      url = `https://milkapp-backend-production.up.railway.app/api/milks?page=${page}&limit=9&filter=${searchUrlFormat}`;
     }
     setLoadingSpinner(true);
     fetch(url, {
@@ -60,7 +60,7 @@ export const MilkProvider = ({ children }: MilkProviderProps) => {
 
   const getMilkByName = (searchName: string) => {
     setLoadingSpinner(true);
-    fetch(`https://milkapp-api.onrender.com/api/milks/${searchName}`, { method: 'GET' })
+    fetch(`https://milkapp-backend-production.up.railway.app/api/milks/${searchName}`, { method: 'GET' })
       .then(response => {
         if (!response.ok) {
           throw new Error();
